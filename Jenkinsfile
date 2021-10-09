@@ -13,7 +13,7 @@ pipeline {
             }          
 		  stage("Unit test") {
                when {
-			     env.GIT_BRANCH == 'master' 
+			     branch 'master' 
 				}
 			   steps {
                     sh "./gradlew test"
@@ -21,7 +21,7 @@ pipeline {
              }
           stage("Code coverage") {
                when {
-			     env.GIT_BRANCH == 'master' 
+			     branch 'master' 
 				}               
 			   steps {
                     sh "./gradlew jacocoTestReport"
@@ -30,7 +30,7 @@ pipeline {
              }	
           stage("Static code analysis") {
                when {
-			     env.GIT_BRANCH == 'master' 
+			     branch 'master' 
 				}
 			   steps {
                     sh "./gradlew checkstyleMain"
