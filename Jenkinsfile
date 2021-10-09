@@ -13,7 +13,7 @@ pipeline {
             }          
 		  stage("Unit test") {
                when {
-			     branch "origin/master" || "origin/feature"
+			     branch "master" || "feature"
 				}
 			   steps {
                     sh "./gradlew test"
@@ -21,7 +21,7 @@ pipeline {
              }
           stage("Code coverage") {
                when {
-			     branch "origin/master" || "origin/feature"
+			     branch "master" || "feature"
 				}               
 			   steps {
                     sh "./gradlew jacocoTestReport"
