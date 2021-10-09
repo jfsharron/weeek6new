@@ -8,7 +8,7 @@ pipeline {
                steps {
                     sh "./gradlew compileJava"
                }
-            }
+             }
           stage("echo branch") {
                steps {
                     echo env.GIT_BRANCH
@@ -22,7 +22,6 @@ pipeline {
                     sh "./gradlew test"
                }
              }
-		   }
           stage("Code coverage") {
                when {
 			     branch "origin/master" || "origin/feature"
@@ -31,8 +30,7 @@ pipeline {
                     sh "./gradlew jacocoTestReport"
                     sh "./gradlew jacocoTestCoverageVerification"
                }
-             }
-		   }	
+             }	
           stage("Static code analysis") {
                when {
 			     branch "origin/master"
@@ -43,4 +41,3 @@ pipeline {
              }
            }
     }
-}
